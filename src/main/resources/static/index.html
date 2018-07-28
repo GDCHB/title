@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>标题生成器</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css" >
+    <link rel="stylesheet" href="css/style.css" >
+    <script type="text/javascript" src="js/public/jquery.min.js"></script>
+    <script type="text/javascript" src="js/public/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/public/kkpager/kkpager.min.js"></script>
+    <script type="text/javascript" src="js/public/angular.min.js"></script>
+    <script type="text/javascript" src="js/public/angular-resource.js"></script>
+    <script type="text/javascript" src="js/title/app.js"></script>
+    <script type="text/javascript" src="js/title/controllers.js"></script>
+    <script type="text/javascript" src="js/title/services.js"></script>
+    <script type="text/javascript" src="js/title/directives.js"></script>
+    <script type="text/javascript" src="js/title/utils.js"></script>
+    <script type="text/javascript" src="js/title/models.js"></script>
+</head>
+<body ng-controller="titleCtrl">
+<div class="task-container  clearfix" >
+    <!--max-container START-->
+    <div class="max-container" >
+        <!--<list ng-show="showTaskList == true"></list>-->
+        <!--<add-list ng-show="showTaskList == false"></add-list>-->
+        <!--任务列表-->
+        <div class="task-list-wrap">
+
+            <div class="btn-wrap tr">
+                <span class="btn btn-primary" ng-click="buildTitle()">生成标题</span>
+                <span class="btn btn-primary" ng-click="newContent()">新增词库内容</span>
+            </div>
+            <div class="panel panel-middle clearfix mt-10">
+                <div class="panel-body">
+
+                    <!--table start-->
+                    <table class="table table-report">
+                        <thead>
+                        <th width="25%">序号</th>
+                        <th width="25%">词库</th>
+                        <th width="25%">内容</th>
+                        <th width="25%">操作</th>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-repeat="item in titleList">
+                            <td>{{$index+1}}</td>
+                            <td>{{item.lexiconNum}}</td>
+                            <td>{{item.content}}</td>
+                            <td ng-click="delLexicon(item.id)">删除</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--table end-->
+                    <!--页码-->
+                    <div id="titleListPage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--max-container START-->
+</div>
+<div class="add-list-wrap" id="addTitle" title="条件词库内容"  hidden>
+    <div class="form-group mt-20 clearfix">
+        <div class="task-item-wrap">
+            <div class="add-item">
+                <div class="task-item task-item-new">
+                    <span class="name">新增内容：</span>
+                    <input type="text" ng-model="newLexicon.content"/>
+                    <span class="name ml-30">词库：</span>
+                    <select class="select" ng-model="newLexicon.lexiconNum">
+                        <option value="1">词库1</option>
+                        <option value="2">词库2</option>
+                        <option value="3">词库3</option>
+                        <option value="4">词库4</option>
+                        <option value="5">词库5</option>
+                        <option value="6">词库6</option>
+                        <option value="7">词库7</option>
+                        <option value="8">词库8</option>
+                        <option value="9">词库9</option>
+                        <option value="10">词库10</option>
+                        <option value="11">词库11</option>
+                        <option value="12">词库12</option>
+                        <option value="13">词库13</option>
+                        <option value="14">词库14</option>
+                        <option value="15">词库15</option>
+                        <option value="16">词库16</option>
+                        <option value="17">词库17</option>
+                        <option value="18">词库18</option>
+                        <option value="19">词库19</option>
+                        <option value="20">词库20</option>
+                        <option value="21">词库21</option>
+                        <option value="22">词库22</option>
+                        <option value="23">词库23</option>
+                        <option value="24">词库24</option>
+                        <option value="25">词库25</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="add-list-wrap" id="buildTitle" title="标题"  hidden>
+    <div class="form-group mt-20 clearfix">
+        <div class="task-item-wrap">
+            {{buildTitleRet}}
+        </div>
+    </div>
+</div>
+</body>
+</html>

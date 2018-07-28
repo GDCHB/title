@@ -1,0 +1,127 @@
+#kkpager{
+	clear:both;
+	color:#94c2d8;
+	padding:15px 0 15px 10px;
+	font-size:13px; 
+}
+#kkpager>div{
+     width: 670px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#kkpager a{
+	float: left;
+	border: 1px solid  #00afe9;
+	display: inline;
+	padding: 3px 10px 3px 10px;
+	margin-right: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor: pointer;
+	background: #0b97c6;
+	text-decoration:none;
+	color:#fff;
+}
+
+#kkpager span.disabled{
+	float: left;
+	display: inline;
+	padding: 3px 10px 3px 10px;
+	margin-right: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border:1px solid transparent;
+	background-color:#364960;
+	color:#999;
+}
+#kkpager span.curr{
+	float: left;
+	border:0;
+	display: inline;
+	padding: 3px 10px 3px 10px;
+	margin-right: 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background: transparent;
+	color: #f60;
+}
+#kkpager a:hover{
+	border:1px solid #00afe9;
+	background-color:#00afe9;
+	color:#fff;
+}
+#kkpager span.normalsize{
+}
+#kkpager_gopage_wrap{
+	position:relative;
+	left:0px;
+	top:0px;
+}
+#kkpager_btn_go {
+	width:44px;
+	height:18px;
+	border:0px;
+	overflow:hidden;
+	line-height:140%;
+	padding:0px;
+	margin:0px;
+	text-align:center;
+	cursor:pointer;
+	background-color:#797bd9;
+	color:#FFF;
+	position:absolute;
+	left:0px;
+	top:-2px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	display:none;
+}
+#kkpager_btn_go_input{
+	width:36px;
+	height:14px;
+	color:#999;
+	text-align:center;
+	border:1px solid #DFDFDF;
+	position:relative;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	left:0px;
+	top:0px;
+	outline:none;
+    margin: -5px 3px 0 3px;
+}
+
+#kkpager_btn_go_input.focus{
+	border-color:#797bd9;
+}
+
+#kkpager .pageBtnWrap{
+	float:right;
+    margin-left: 15px;
+}
+#kkpager .infoTextAndGoPageBtnWrap{
+	float:left;
+}
+#kkpager .spanDot{
+	float:left;
+	margin-right:5px;
+}
+
+#kkpager .currPageNum{
+	color:#FD7F4D;
+    
+}
+
+#kkpager .infoTextAndGoPageBtnWrap{
+	padding-top:5px;
+}
+
+
+#kkpager .totalRecordNum{
+    font-weight: bold;
+    color: #f60;
+    padding: 0 5px;
+}
