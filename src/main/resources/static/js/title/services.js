@@ -6,11 +6,12 @@ app.factory("titleSrv",['$rootScope','$q','titleModel','titleReqModel',function 
     var pageSize = 15;
     var pages = 1;
     var total = 1;
+    var lexiconNum = "0";
     //当前用户
     var m_CurrUserId= "";
-    var getTitleList = function (pageNum,pageSize) {
+    var getTitleList = function (pageNum,pageSize,lexiconNum) {
         var deferred=$q.defer();
-        titleModel.getTitleList({pageNum:pageNum,pageSize:pageSize},{_1:"get"}, function(json) {
+        titleModel.getTitleList({pageNum:pageNum,pageSize:pageSize,lexiconNum:lexiconNum},{_1:"get"}, function(json) {
             deferred.resolve(json);
         },function(fail){
             deferred.reject(fail);
@@ -43,6 +44,9 @@ app.factory("titleSrv",['$rootScope','$q','titleModel','titleReqModel',function 
         setPageSize : function(param){
             pageSize = param;
         },
+        setLexiconNum : function(param){
+            lexiconNum = param;
+        },
         getUserId:function(){
             var context = titleReqModel.getUserId();
             if( context == null || context == "" || context == "undefined" || context == -1){
@@ -57,7 +61,7 @@ app.factory("titleSrv",['$rootScope','$q','titleModel','titleReqModel',function 
          * @param callBack
          */
         loadTitleList:function(callBack){
-            getTitleList(pageNum,pageSize).then(
+            getTitleList(pageNum,pageSize,lexiconNum).then(
                 function(data){
                     console.log("loadTitleList succ")
                     console.log(data);

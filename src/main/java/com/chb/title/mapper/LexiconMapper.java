@@ -6,6 +6,8 @@ import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
+import java.util.List;
+
 public interface LexiconMapper {
     @SelectProvider(type=LexiconSqlProvider.class, method="countByExample")
     long countByExample(LexiconExample example);
@@ -37,6 +39,14 @@ public interface LexiconMapper {
         @Result(column="lexicon_num", property="lexiconNum", jdbcType=JdbcType.INTEGER)
     })
     Page<Lexicon> selectByExample(LexiconExample example);
+
+    @SelectProvider(type=LexiconSqlProvider.class, method="selectByExample")
+    @Results({
+            @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+            @Result(column="content", property="content", jdbcType=JdbcType.VARCHAR),
+            @Result(column="lexicon_num", property="lexiconNum", jdbcType=JdbcType.INTEGER)
+    })
+    List<Lexicon> selectListByExample(LexiconExample example);
 
     @Select({
         "select",

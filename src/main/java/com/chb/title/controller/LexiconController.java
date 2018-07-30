@@ -101,7 +101,8 @@ public class LexiconController {
             pageSize = Utils.toInt(request.getParameter("pageSize"));
         }
         if(Utils.isNotBlank(lexiconNum)){
-            lexicon.setLexiconNum(Utils.toInt(lexiconNum));
+            if(!"0".equals(lexiconNum))
+                lexicon.setLexiconNum(Utils.toInt(lexiconNum));
         }
         Page<Lexicon> lexiconList = new Page<>();
         try {
@@ -158,7 +159,8 @@ public class LexiconController {
             lexicon.setLexiconNum(i);
             int count = lexiconService.count(lexicon);
             if(count>0){
-                Lexicon lexicon1 = getRandomOne(lexiconList,i,10);
+                List<Lexicon> lexiconList1 = lexiconService.getList(lexicon);
+                Lexicon lexicon1 = getRandomOne(lexiconList,lexiconList1,10);
                 logger.debug(gson.toJson(lexicon1));
                 if(lexicon1!=null)
                     lexiconList.add(lexicon1.getContent());
@@ -175,14 +177,17 @@ public class LexiconController {
         return null;
     }
 
-    private Lexicon getRandomOne(List<String> lexiconList,int i,int times){
+    private Lexicon getRandomOne(List<String> lexiconList,List<Lexicon> resultList,int times){
         if(times == 0){
             return null;
         }
         times--;
-        Lexicon lexicon =  lexiconService.getRandomOne(i);
+        Random random = new Random();
+        int size = resultList.size();
+        int ran = random.nextInt(size);
+        Lexicon lexicon =  resultList.get(ran);
         if(lexiconList.contains(lexicon.getContent())){
-            return getRandomOne(lexiconList,i,times);
+            return getRandomOne(lexiconList,resultList,times);
         }else {
             return lexicon;
         }

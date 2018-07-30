@@ -62,4 +62,13 @@ public class LexiconImpl implements LexiconService {
     public int del(int id) {
         return lexiconMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public List<Lexicon> getList(Lexicon lexicon) {
+        LexiconExample lexiconExample = new LexiconExample();
+        LexiconExample.Criteria criteria = lexiconExample.createCriteria();
+        if(lexicon.getLexiconNum()!=null)
+            criteria.andLexiconNumEqualTo(lexicon.getLexiconNum());
+        return lexiconMapper.selectListByExample(lexiconExample);
+    }
 }

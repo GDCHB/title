@@ -2543,6 +2543,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7097ac', end
     height: 24px;
     width: 100px;
 }
+.table-report  .select{
+    background: #0f3655;
+    color: #61ebf6;
+    border: 0;
+    height: 24px;
+    width: 100px;
+}
 .task-item-wrap .task-item .select-text{
     height: 24px;
     width: 90px;

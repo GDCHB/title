@@ -12,4 +12,5 @@ public interface LexiconService {
     int count(Lexicon lexicon);
     int del(int id);
     Lexicon getRandomOne(int lexiconNum);
+    List<Lexicon> getList(Lexicon lexicon);
 }
