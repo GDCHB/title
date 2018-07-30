@@ -36,12 +36,25 @@ public class LexiconController {
         logger.debug("******************************");
         return "welcome to lexicon by chb" ;
     }
+
+    /**
+     * 首页
+     * @return
+     */
     @RequestMapping(value = "index")
     public ModelAndView index(){
         return new ModelAndView("index.html");
     }
 
 
+    /**
+     * 保存词库内容
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     * @throws BaseException
+     */
     @RequestMapping(value = "save")
     public ModelAndView save(HttpServletRequest request , HttpServletResponse response) throws IOException, BaseException {
         request.setCharacterEncoding("UTF-8");
@@ -85,6 +98,14 @@ public class LexiconController {
         return null;
     }
 
+    /**
+     * 获取列表
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     * @throws BaseException
+     */
     @RequestMapping(value = "get")
     public ModelAndView get(HttpServletRequest request , HttpServletResponse response) throws IOException, BaseException {
         request.setCharacterEncoding("UTF-8");
@@ -117,6 +138,14 @@ public class LexiconController {
         return null;
     }
 
+    /**
+     * 删除
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     * @throws BaseException
+     */
     @RequestMapping(value = "del")
     public ModelAndView del(HttpServletRequest request , HttpServletResponse response) throws IOException, BaseException {
         request.setCharacterEncoding("UTF-8");
@@ -146,6 +175,14 @@ public class LexiconController {
         return null;
     }
 
+    /**
+     * 生成标题
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     * @throws BaseException
+     */
     @RequestMapping(value = "buildTitle")
     public ModelAndView buildTitle(HttpServletRequest request , HttpServletResponse response) throws IOException, BaseException {
         request.setCharacterEncoding("UTF-8");
@@ -177,6 +214,14 @@ public class LexiconController {
         return null;
     }
 
+
+    /**
+     * 生成标题时，如果以有改内容，递归查找下一个，10次还是找不到就返回
+     * @param lexiconList
+     * @param resultList
+     * @param times
+     * @return
+     */
     private Lexicon getRandomOne(List<String> lexiconList,List<Lexicon> resultList,int times){
         if(times == 0){
             return null;
