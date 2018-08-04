@@ -57,8 +57,9 @@ app.controller("titleCtrl",['$scope','$rootScope','$timeout','titleSrv','$compil
             modal: true,
             title: "新生成的标题",
             buttons: {
-                "关闭": function () {
-                    buildTitleDialog.dialog("close");
+                "复制": function () {
+                    //buildTitleDialog.dialog("close");
+                    $scope.copy();
                 },
                 "下一条":function () {
                     $scope.buildTitleRet = titleSrv.buildTitle();
@@ -71,7 +72,16 @@ app.controller("titleCtrl",['$scope','$rootScope','$timeout','titleSrv','$compil
                 buildTitleDialog.dialog("close");
             }
         });
-    }
+    };
+    $scope.copy = function(){
+        document.getElementById("titleRet").select();
+        try {
+            var msg = document.execCommand('copy') ? '复制成功' : '复制失败';
+            alert(msg);
+        } catch (err) {
+            alert('不能使用这种方法复制内容');
+        }
+    };
     $scope.delLexicon = function(id){
         var ret = titleSrv.delLexicon(id);
         if(ret == 1){
