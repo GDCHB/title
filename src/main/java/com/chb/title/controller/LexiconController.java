@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,6 +31,9 @@ public class LexiconController {
     Gson gson = new Gson();
     @Autowired
     LexiconService lexiconService ;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @RequestMapping(value = "test")
     public String test(){
@@ -238,6 +242,24 @@ public class LexiconController {
         }
     }
 
+
+    @RequestMapping(value = "set")
+    public ModelAndView set(HttpServletRequest request , HttpServletResponse response) throws IOException, BaseException {
+        request.setCharacterEncoding("UTF-8");
+        response.addHeader("Access-Control-Allow-Origin","*");
+        response.setCharacterEncoding("UTF-8");
+        redisTemplate.opsForValue().set("test:set","testValue1");
+        return null;
+    }
+
+    @RequestMapping(value = "getRedis")
+    public ModelAndView getRedis(HttpServletRequest request , HttpServletResponse response) throws IOException, BaseException {
+        request.setCharacterEncoding("UTF-8");
+        response.addHeader("Access-Control-Allow-Origin","*");
+        response.setCharacterEncoding("UTF-8");
+        Object ret = redisTemplate.opsForValue().get("test:set");
+        return null;
+    }
 
 
 }
